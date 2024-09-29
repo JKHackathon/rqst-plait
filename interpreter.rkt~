@@ -10,12 +10,7 @@
   (interp (parse str)))
 
 ;; DO NOT EDIT ABOVE THIS LINE =================================================
-;(trace eval)
+
 (define (interp [expr : Expr]): Value
   ; TODO: Implement me!
-  (cond
-    [(e-num? expr) (v-num (e-num-value expr))]
-    [(e-str? expr) (v-str (e-str-value expr))]
-    [(e-bool? expr) (v-bool (e-bool-value expr))]
-    )
-  )
+  ....)
