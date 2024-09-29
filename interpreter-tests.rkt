@@ -29,6 +29,40 @@
                (eval `true) (v-bool true))
   (test-equal? "Simple Bool false Test"
                (eval `false) (v-bool false))
+  
+  (test-equal? "Basic binary addition"
+               (eval `{+ 1 2}) (v-num 3))
+  (test-raises-error? "Invalid binary addition input: left str"
+               (eval `{+ "woah" 2}))
+  (test-raises-error? "Invalid binary addition input: left bool"
+               (eval `{+ true 2}))
+
+  (test-equal? "Basic num equality"
+               (eval `{num= 14 14}) (v-bool true))
+  (test-equal? "Basic num inequality"
+               (eval `{num= 1 2}) (v-bool false))
+  (test-raises-error? "Invalid num equality input: left str"
+               (eval `{num= "woah" 2}))
+  (test-raises-error? "Invalid num equality input: right bool"
+               (eval `{num= 2 false}))
+
+  (test-equal? "Basic string appending"
+               (eval `{++ "hello" "world"}) (v-str "helloworld"))
+  (test-raises-error? "Invalid string appending input: int"
+               (eval `{++ "woah" 2}))
+  (test-raises-error? "Invalid string appending input: bool"
+               (eval `{++ true "test"}))
+
+  (test-equal? "Basic str equality"
+               (eval `{str= "hello" "hello"}) (v-bool true))
+  (test-equal? "Basic str inequality"
+               (eval `{str= "hello" "world"}) (v-bool false))
+  (test-raises-error? "Invalid str equality input: num"
+               (eval `{str= 2 2}))
+  (test-raises-error? "Invalid str equality input: bool"
+               (eval `{str= "Hello" false}))
+  ; TODO: need nested tests
+  ; TODO: test if-statements
   )
 
 ;; DO NOT EDIT BELOW THIS LINE =================================================
