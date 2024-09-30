@@ -65,6 +65,32 @@
                (eval `{str= "Hello" false}))
   ; TODO: need nested tests
   ; TODO: test if-statements
+
+  (test-pred "My predicate test"
+           v-fun? (eval `{lam x {+ x 1}}))
+
+
+  ; Basic function calls
+  (test-equal? "Basic lambda"
+              (eval `{`{lam x x} 10})
+              (v-num 10))
+
+  ; TODO: test dynamic scope
+  ; (test-equal? "Dynamic scope"
+  ;             (let* ([f (eval `{lam x {+ x y}})]
+  ;                    [g (eval `{lam y {f y}})])
+  ;               (eval `{g 10}))
+  ;             (v-num 20))
+  ; (test-raises-error? "Dynamic scope"
+  ;             (let* ([f (eval `{lam x {+ x y}})]
+  ;                    [g (eval `{lam y {f y}})])
+  ;               (eval `{g 10})))
+
+  ; (test-equal? "Nested function calls"
+  ;             (let* ([f (eval `{lam x {+ x 1}})]
+  ;                    [g (eval `{lam y {f y}})])
+  ;               (eval `{g 10}))
+  ;             (v-num 11))
   )
 
 ;; DO NOT EDIT BELOW THIS LINE =================================================
